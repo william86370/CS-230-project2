@@ -1,9 +1,12 @@
 //Movies header file w/implementation
 //Movies is derived class of Item
-#ifndef Movies_h
-#define Movies_h
-#include<iostream>
-#endif
+#ifndef Movies_hpp
+#define Movies_hpp
+
+#include <stdio.h>
+#include <iostream>
+
+#endif /* Movies_hpp */
 using namespace std;
 
 class Movie //class Movie,public Item
