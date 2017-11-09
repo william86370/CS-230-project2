@@ -23,8 +23,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		103303B11FB21EB90074AC56 /* Grocery.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Grocery.hpp; sourceTree = "<group>"; };
-		103303B21FB21EB90074AC56 /* Clothings.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Clothings.hpp; sourceTree = "<group>"; };
 		103303B31FB21EB90074AC56 /* Item.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		103303B41FB21EB90074AC56 /* Electronics.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Electronics.hpp; sourceTree = "<group>"; };
 		103303B81FB21F4E0074AC56 /* Movies.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Movies.hpp; sourceTree = "<group>"; };
@@ -62,9 +60,7 @@
 		10E259FE1FAB728C0033F2C1 /* Project 2: Inheritance and Polymorphism */ = {
 			isa = PBXGroup;
 			children = (
-				103303B21FB21EB90074AC56 /* Clothings.hpp */,
 				103303B41FB21EB90074AC56 /* Electronics.hpp */,
-				103303B11FB21EB90074AC56 /* Grocery.hpp */,
 				103303B31FB21EB90074AC56 /* Item.h */,
 				103303B81FB21F4E0074AC56 /* Movies.hpp */,
 				10E259FF1FAB728C0033F2C1 /* main.cpp */,
