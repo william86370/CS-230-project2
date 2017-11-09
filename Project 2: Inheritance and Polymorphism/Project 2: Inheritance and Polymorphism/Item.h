@@ -17,14 +17,26 @@ class item{
 private:
     string name;
     double price;
+    string upc;
 public:
-    item(string,double);
+    item();
+    item(string,double,string);
     string getname();
     double getprice();
+    void setname(string);
+    void setprice(double);
+    string getupc();
+    void setupc(string);
 };
-item::item(string nameh,double pricei){
+item::item(){
+    name = "";
+    price = NULL;
+    upc = "";
+}
+item::item(string nameh,double pricei,string upc2){
     name = nameh;
     price = pricei;
+    upc  = upc2
 }
 string item::getname(){
     return name;
@@ -32,3 +44,16 @@ string item::getname(){
 double item::getprice(){
     return price;
 }
+void item::setname(string name2){
+    name = name2;
+}
+void item::setprice(double price2){
+    price = price2;
+}
+void item::setupc(string upc2){
+    upc = upc2;
+}
+string item::getupc(){
+    return upc;
+}
+

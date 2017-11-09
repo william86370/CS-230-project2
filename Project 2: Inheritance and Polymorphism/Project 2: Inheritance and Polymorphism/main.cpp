@@ -7,10 +7,11 @@
 //
 #ifndef main_cpp
 #define main_cpp
-#include "Item.h"
+
 #include<iostream>
 #include<fstream>
 #include"Movies.hpp"
+
 #include<stdio.h>
 
 #endif
@@ -43,7 +44,7 @@ int main()
     mov1.setRating(5.0);
     
     mov1.Numcopies(3);
-    
+    outfile<<mov1.getFormat();
     //Movie 2
     mov2.setTitle("The Kingsman");
     
