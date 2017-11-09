@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		103303B71FB21F3C0074AC56 /* Movie testfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 103303B61FB21F3C0074AC56 /* Movie testfile.cpp */; };
 		10E25A001FAB728C0033F2C1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10E259FF1FAB728C0033F2C1 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -24,12 +23,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		103303B11FB21EB90074AC56 /* Grocery.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Grocery.hpp; sourceTree = "<group>"; };
-		103303B21FB21EB90074AC56 /* Clothings.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Clothings.hpp; sourceTree = "<group>"; };
 		103303B31FB21EB90074AC56 /* Item.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		103303B41FB21EB90074AC56 /* Electronics.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Electronics.hpp; sourceTree = "<group>"; };
-		103303B61FB21F3C0074AC56 /* Movie testfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Movie testfile.cpp"; sourceTree = "<group>"; };
-		103303B81FB21F4E0074AC56 /* Movies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Movies.h; sourceTree = "<group>"; };
+		103303B81FB21F4E0074AC56 /* Movies.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Movies.hpp; sourceTree = "<group>"; };
 		10E259FC1FAB728C0033F2C1 /* Project 2: Inheritance and Polymorphism */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Project 2: Inheritance and Polymorphism"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E259FF1FAB728C0033F2C1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,13 +60,10 @@
 		10E259FE1FAB728C0033F2C1 /* Project 2: Inheritance and Polymorphism */ = {
 			isa = PBXGroup;
 			children = (
-				103303B21FB21EB90074AC56 /* Clothings.hpp */,
 				103303B41FB21EB90074AC56 /* Electronics.hpp */,
-				103303B11FB21EB90074AC56 /* Grocery.hpp */,
 				103303B31FB21EB90074AC56 /* Item.h */,
-				103303B81FB21F4E0074AC56 /* Movies.h */,
+				103303B81FB21F4E0074AC56 /* Movies.hpp */,
 				10E259FF1FAB728C0033F2C1 /* main.cpp */,
-				103303B61FB21F3C0074AC56 /* Movie testfile.cpp */,
 			);
 			path = "Project 2: Inheritance and Polymorphism";
 			sourceTree = "<group>";
@@ -133,7 +126,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				10E25A001FAB728C0033F2C1 /* main.cpp in Sources */,
-				103303B71FB21F3C0074AC56 /* Movie testfile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +240,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2U2K8SJ7Q7;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -257,6 +250,8 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2U2K8SJ7Q7;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

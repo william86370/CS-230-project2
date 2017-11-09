@@ -8,16 +8,18 @@
 
 #ifndef Electronics_hpp
 #define Electronics_hpp
-
+#include <iostream>
 #include <stdio.h>
-
+#include "item.h"
 #endif /* Electronics_hpp */
 using namespace std;
-class Electronics{
+class Electronics : public item{
 private:
     string type;
 public:
-    item(string,double);
-    string getname();
-    
+    Electronics();
 };
+Electronics::Electronics(){
+    item();
+    type = "";
+}
