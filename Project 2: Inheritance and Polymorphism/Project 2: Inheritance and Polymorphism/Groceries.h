@@ -14,10 +14,17 @@ private:
 
 public:
 	Groceries();
-	string setFoodtype(string);//choice between fresh,canned,and frozen
-    void Expiration(string);//expiration date
-    void Calories(int);
-    void Quantity(int);
+	void setFoodtype(string);//choice between fresh,canned,and frozen
+    string getFoodtype();
+	
+	void setExpiration(string);//expiration date
+    string getExpiration();
+    
+	void setCalories(int);
+    int getCalories();
+	
+	void setQuantity(int);
+	int getQuantity();
 };
 // Groceries header implementation
 
@@ -31,29 +38,62 @@ int quantity=0;
 
 }
 
-string Groceries::setFoodtype(string f)
+void Groceries::setFoodtype(string f)
 {
 type=f;
 
 }
 
-void Groceries::Expiration(string e)
+string Groceries::getFoodtype()
+{
+return type;
+
+}
+
+
+void Groceries::setExpiration(string e)
 {
 
 expiration=e;
 
 }
 
-void Groceries::Calories(int c)
+string Groceries::getExpiration()
+{
+
+return expiration;
+}
+
+
+
+void Groceries::setCalories(int c)
 {
 
 calorie=c;
 
 }
 
-void Groceries::Quantity(int q)
+int Groceries::getCalories()
+{
+
+return calorie;
+}
+
+
+
+void Groceries::setQuantity(int q)
 {
 
 quantity=q;
 
 }
+
+int Groceries::getQuantity()
+{
+
+return quantity;
+
+}
+
+
+
