@@ -85,7 +85,7 @@ int main()
         cout<<"!!FILE NOT OPENED!!"<<endl;
     }
     
-    //Movie 1
+    //Movie 1 setters
     mov1.setTitle("Lion King");
     
     mov1.setYear(1994);
@@ -97,8 +97,16 @@ int main()
     mov1.setRating(5.0);
     
     mov1.Numcopies(3);
-    outfile<<mov1.getFormat();
-    //Movie 2
+    
+    //Movie 1 getters and file writing
+    outfile<<"Title:\t"<<mov1.getTitle()<<"\t";
+    outfile<<"Year:\t"<<mov1.getYear()<<"\t"
+    outfile<<"Format:\t"<<mov1.getFormat()<<"\t";
+    outfile<<"Director:\t"<<mov1.getDirector()<<"\t"
+    outfile<<"Rating:\t"<<mov1.getRating()<<"\t";
+    outfile<<"Copies:\t"<<mov1.getNumcopies()<<"\n"<<endl;
+    
+    //Movie 2 setters
     mov2.setTitle("The Kingsman");
     
     mov2.setYear(2013);
@@ -111,7 +119,15 @@ int main()
     
     mov2.Numcopies(1);
     
-    //Movie 3
+    //Movie 2 getters and file writing
+    outfile<<"Title:\t"<<mov2.getTitle()<<"\t";
+    outfile<<"Year:\t"<<mov2.getYear()<<"\t";
+    outfile<<"Format:\t"<<mov2.getFormat()<<"\t";
+    outfile<<"Director:\t"<<mov2.getDirector()<<"\t";
+    outfile<<"Rating:\t"<<mov2.getRating()<<"\t";
+    outfile<<"Copies:\t"<<mov2.getNumcopies()<<"\n"<<endl;
+ 
+    //Movie 3 setters
     mov3.setTitle("Thor: Raganarok");
     
     mov3.setYear(2017);
@@ -123,6 +139,14 @@ int main()
     mov3.setRating(2.0);
     
     mov3.Numcopies(20);
+    
+    //Movie 3 getters and file writing
+    outfile<<"Title:\t"<<mov3.getTitle()<<"\t";
+    outfile<<"Year:\t"<<mov3.getYear()<<"\t";
+    outfile<<"Format:\t"<<mov3.getFormat()<<"\t";
+    outfile<<"Director:\t"<<mov3.getDirector()<<"\t";
+    outfile<<"Rating:\t"<<mov3.getRating()<<"\t";
+    outfile<<"Copies:\t"<<mov3.getNumcopies()<<endl;
     
     outfile.close();
     
