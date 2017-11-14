@@ -1,10 +1,4 @@
-//
-//  Food.hpp
-//  Project 2: Inheritance and Polymorphism
-//
-//  Created by william wright on 11/2/17.
-//  Copyright © 2017 SilverTap. All rights reserved.
-//
+
 
 
 #ifndef Item_h
@@ -36,7 +30,7 @@ item::item(){
 item::item(string nameh,double pricei,string upc2){
     name = nameh;
     price = pricei;
-    upc  = upc2
+    upc  = upc2;
 }
 string item::getname(){
     return name;

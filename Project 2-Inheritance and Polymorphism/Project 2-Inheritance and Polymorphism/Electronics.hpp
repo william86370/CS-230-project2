@@ -10,7 +10,7 @@
 #define Electronics_hpp
 #include <iostream>
 #include <stdio.h>
-#include "item.h"
+#include "Item.h"
 #endif /* Electronics_hpp */
 using namespace std;
 class Electronics : public item{
