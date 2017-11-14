@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		100F80F31FB4C948002E2295 /* Groceries test file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 100F80F21FB4C948002E2295 /* Groceries test file.cpp */; };
 		10E25A001FAB728C0033F2C1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10E259FF1FAB728C0033F2C1 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		100F80F21FB4C948002E2295 /* Groceries test file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "Groceries test file.cpp"; sourceTree = "<group>"; };
+		100F80F41FB4C94E002E2295 /* Groceries.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Groceries.h; sourceTree = "<group>"; };
 		103303B31FB21EB90074AC56 /* Item.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		103303B41FB21EB90074AC56 /* Electronics.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Electronics.hpp; sourceTree = "<group>"; };
 		103303B81FB21F4E0074AC56 /* Movies.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Movies.hpp; sourceTree = "<group>"; };
@@ -64,6 +67,8 @@
 				103303B31FB21EB90074AC56 /* Item.h */,
 				103303B81FB21F4E0074AC56 /* Movies.hpp */,
 				10E259FF1FAB728C0033F2C1 /* main.cpp */,
+				100F80F21FB4C948002E2295 /* Groceries test file.cpp */,
+				100F80F41FB4C94E002E2295 /* Groceries.h */,
 			);
 			path = "Project 2: Inheritance and Polymorphism";
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10E25A001FAB728C0033F2C1 /* main.cpp in Sources */,
+				100F80F31FB4C948002E2295 /* Groceries test file.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
