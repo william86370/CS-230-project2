@@ -126,7 +126,7 @@ void moviemenu(){
         }
     }
     cout<<"\n";
-
+    
 }
 void moviesearch(){
     
@@ -351,7 +351,7 @@ void groceriesearch(){
                     }
                 }else{
                     cout<<"incorrcect entrie"<<endl;
-                   groceriesearch();
+                    groceriesearch();
                 }
             }
         }
@@ -388,7 +388,7 @@ void groceriesearch(){
                     }
                 }else{
                     cout<<"incorrcect entrie"<<endl;
-                   groceriesearch();
+                    groceriesearch();
                 }
             }
         }
@@ -420,7 +420,7 @@ void groceriesearch(){
                     int x;
                     cin>>x;
                     if(x==1){
-                       groceriesearch();
+                        groceriesearch();
                     }else{
                         groceriemenu();
                     }
