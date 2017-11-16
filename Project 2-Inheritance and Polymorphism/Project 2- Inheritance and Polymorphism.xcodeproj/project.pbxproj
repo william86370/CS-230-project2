@@ -25,6 +25,8 @@
 /* Begin PBXFileReference section */
 		100F80F41FB4C94E002E2295 /* Groceries.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Groceries.h; sourceTree = "<group>"; };
 		100F80F51FBB4EB7002E2295 /* Item.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		100F80F61FBB58F9002E2295 /* movielist.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = movielist.txt; sourceTree = "<group>"; };
+		100F80F81FBB5AA5002E2295 /* MovieList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MovieList.hpp; sourceTree = "<group>"; };
 		103303B41FB21EB90074AC56 /* Electronics.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Electronics.hpp; sourceTree = "<group>"; };
 		103303B81FB21F4E0074AC56 /* Movies.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Movies.hpp; sourceTree = "<group>"; };
 		10E259FC1FAB728C0033F2C1 /* Project 2: Inheritance and Polymorphism */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Project 2: Inheritance and Polymorphism"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +68,8 @@
 				103303B81FB21F4E0074AC56 /* Movies.hpp */,
 				10E259FF1FAB728C0033F2C1 /* main.cpp */,
 				100F80F41FB4C94E002E2295 /* Groceries.h */,
+				100F80F61FBB58F9002E2295 /* movielist.txt */,
+				100F80F81FBB5AA5002E2295 /* MovieList.hpp */,
 			);
 			path = "Project 2-Inheritance and Polymorphism";
 			sourceTree = "<group>";

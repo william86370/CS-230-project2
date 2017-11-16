@@ -8,7 +8,6 @@
 #include "Electronics.hpp"
 #endif /* Movies_hpp */
 using namespace std;
-
 class Movie: public item //class Movie,public Item
 {
 private:
@@ -19,8 +18,10 @@ private:
 	string title;
 	string format;//dvd,digital,vhs
 	string director;
+    Movie* nextMovie;
 
 public:
+    void moviemenu();
 	 //Movie:Item();
 	  Movie();
 	 /*
@@ -43,10 +44,26 @@ public:
     int getYear();
     string getTitle();
     string  getDirector();
+    Movie* getnextMovie();
+    void setNextMovie(Movie* );
+    void getinfo();
 };
 
 //---------------------------------------------------------------------------//
 //class declerations my dood
+
+
+
+
+
+
+void Movie::setNextMovie(Movie* movi){
+    nextMovie = movi;
+}
+
+Movie* Movie::getnextMovie(){
+    return nextMovie;
+}
 Movie::Movie()
 {
 item();
@@ -107,6 +124,9 @@ string Movie::getTitle(){
 }
 string  Movie::getDirector(){
     return director;
+}
+void Movie::getinfo(){
+    cout<<getname()<<" "<< getprice()<<" "<< getupc()<<" "<<rating<<" "<<copy<<" "<<year<<" "<<title<<" "<<format<<" "<<director<<endl;
 }
 //---------------------------------------------------------------------------//
 //end class decleration

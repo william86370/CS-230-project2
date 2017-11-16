@@ -11,123 +11,160 @@
 #include<iostream>
 #include<fstream>
 #include"Groceries.h"
-#include"Movies.hpp"
+
+
 
 #include<stdio.h>
 
 #endif
 using namespace std;
 
+MovieList* pullmovies();
+void moviemenu();
+void mainmenu();
+void top10movies();
+
+
+void moviemenu(){
+    
+   MovieList *movies = pullmovies();
+    movies->displaymovies();
+    int selection;
+    cout<<"\n Einstinzon Movie Menu";
+    cout<<"\n Select an option from the list ";
+    cout<<"\n 1 - search through all the movies";
+    cout<<"\n 2 - view the top 10 movies";
+    cout<<"\n 3 - View Your Current cart";
+    cout<<"\n 4 - return to main menu";
+    cout<<"\n Enter selection: ";
+    // read the input
+    cin>>selection;
+    switch(selection)
+    {
+        case 1 :{cout<<"\n send to search \n";
+            
+        }
+            break;
+            
+        case 2 :{cout<<"\n view top 10 movies";
+            
+        }
+            break;
+            
+        case 3 :{cout<<"\n view your current cart";
+            
+        }
+            break;
+            
+        case 4 :{cout<<"\n return to main menu";
+            mainmenu();
+        }
+            break;
+        default : cout<<"\n Invalid selection";{
+        }
+            
+    }
+    cout<<"\n";
+    
+    
+    
+    
+    
+}
+
+void mainmenu(){
+    int selection;
+    cout<<"\n Einstinzon Main Menu";
+    cout<<"\nPlease Select the Department That You Would like to Shop in";
+    cout<<"\n 1 - Movies";
+    cout<<"\n 2 - Groceries";
+    cout<<"\n 3 - Electronics";
+    cout<<"\n 4 - View Your Current cart";
+    cout<<"\n 5 - exit the program";
+    cout<<"\n Enter selection: ";
+    // read the input
+    cin>>selection;
+    switch(selection)
+    {
+        case 0 :{cout<<"\n send to movies list \n";
+            moviemenu();
+        }
+            break;
+            
+        case 1 :{cout<<"\n send to Groceries list ";
+            
+        }
+            break;
+            
+        case 2 :{cout<<"\n send to Electronics list";
+            
+        }
+            break;
+            
+        case 3 :{cout<<"\n send to cart view ";
+            
+        }
+            break;
+        case 4:{
+            cout<<"\n exit the program";
+        }break;
+        default : cout<<"\n Invalid selection";{
+        }
+            
+    }
+    cout<<"\n";
+    
+    
+}
+
+
 int main()
 {
-    
-    ofstream outfile;
-    
-    Groceries groc1,groc2,groc3;//three instances of groceries class
-    
-    outfile.open("groceries.dat");
-    
-    if(!outfile.is_open())
-    {
-        cout<<"!!FILE NOT OPENED!!"<<endl;
-        
-    }
-    
-    //Grocery 1 setters
-    groc1.setFoodtype("Canned");
-    groc1.setExpiration("1/3/2050");
-    groc1.setCalories(456);
-    groc1.setQuantity(5);
-    
-    //Grocery getters and file writing
-    outfile<<groc1.getFoodtype()<<"\t";
-    outfile<<"Exp=>\t"<<groc1.getExpiration()<<"\t";
-    outfile<<"Calories=>\t"<<groc1.getCalories()<<"\t";
-    outfile<<"Quantity=>\t"<<groc1.getQuantity()<<"\n"<<endl;
-    
-    //Grocery 2 setters
-    groc2.setFoodtype("Fresh");
-    groc2.setExpiration("11/9/2017");
-    groc2.setCalories(1000);
-    groc2.setQuantity(2);
-    
-    //Grocery 2 getters and file writing
-    outfile<<groc2.getFoodtype()<<"\t";
-    outfile<<"Exp=>\t"<<groc2.getExpiration()<<"\t";
-    outfile<<"Calories=>\t"<<groc2.getCalories()<<"\t";
-    outfile<<"Quantity=>\t"<<groc2.getQuantity()<<"\n"<<endl;
-    
-    //Grocery3
-    groc3.setFoodtype("Frozen");
-    groc3.setExpiration("7/3/2018");
-    groc3.setCalories(234);
-    groc3.setQuantity(1);
-    
-    //Grocery 3 getters and file writing
-    outfile<<groc3.getFoodtype()<<"\t";
-    outfile<<"Exp=>\t"<<groc3.getExpiration()<<"\t";
-    outfile<<"Calories=>\t"<<groc3.getCalories()<<"\t";
-    outfile<<"Quantity=>\t"<<groc3.getQuantity()<<"\n";
+    //while loop
     
     
-    outfile.close();
-
-   
+    mainmenu();
     
-    int i;
     
-    Movie mov1,mov2,mov3;  //,mov2,mov3; //declares 3 instances of movie class object
     
-    outfile.open("movies.dat");
     
-    if(!outfile.is_open())
-    {
-        cout<<"!!FILE NOT OPENED!!"<<endl;
-    }
-    
-    //Movie 1
-    mov1.setTitle("Lion King");
-    
-    mov1.setYear(1994);
-    
-    mov1.setFormat("VHS");
-    
-    mov1.setDirector("Benny Reese");
-    
-    mov1.setRating(5.0);
-    
-    mov1.Numcopies(3);
-    outfile<<mov1.getFormat();
-    //Movie 2
-    mov2.setTitle("The Kingsman");
-    
-    mov2.setYear(2013);
-    
-    mov2.setFormat("Digital");
-    
-    mov2.setDirector("Tarantino");
-    
-    mov2.setRating(3.5);
-    
-    mov2.Numcopies(1);
-    
-    //Movie 3
-    mov3.setTitle("Thor: Raganarok");
-    
-    mov3.setYear(2017);
-    
-    mov3.setFormat("Digital");
-    
-    mov3.setDirector("Michael Jackson");
-    
-    mov3.setRating(2.0);
-    
-    mov3.Numcopies(20);
-    
-    outfile.close();
     
     return 0;
 }
 
-
+MovieList* pullmovies(){
+    MovieList *movies = new MovieList();
+ifstream inFile;
+    int x=0;
+    int y;
+    string name2;
+    double price2;
+    string upc2;
+    float rating2;
+    int copys2;
+    int year2;
+    string title2;
+    string format2;
+    string director2;
+    inFile.open("movielist.txt");
+    if (!inFile) {
+        cerr << "Unable to open file datafile.txt";
+        exit(1);   // call system to stop
+    }
+    inFile >> x;
+    for( int y = 0;y<x;y++){
+        inFile >> name2;
+        inFile >> price2;
+        inFile >> upc2;
+        inFile >> rating2;
+        inFile >> copys2;
+        inFile >> year2;
+        inFile >> title2;
+        inFile >> format2;
+        inFile >> director2;
+        //
+        movies->createmovie( name2,  price2,  upc2,  rating2,  copys2,  year2,  title2,  format2,  director2);
+    }
+    return movies;
+}
 
