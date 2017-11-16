@@ -1,36 +1,36 @@
 //
-//  MovieList.hpp
+//  grocerieList.hpp
 //  Project 2: Inheritance and Polymorphism
 //
 //  Created by william wright on 11/14/17.
 //  Copyright © 2017 SilverTap. All rights reserved.
 //
 
-#ifndef MovieList_hpp
-#define MovieList_hpp
-#include"Movies.hpp"
+#ifndef grocerieList_hpp
+#define grocerieList_hpp
+#include"groceries.h"
 #include <stdio.h>
 
-#endif /* MovieList_hpp */
-class MovieList{
+#endif /* grocerieList_hpp */
+class grocerieList{
 private:
-    Movie* ptrhead;
-    Movie* ptrend;
-    Movie* ptr;
+    grocerie* ptrhead;
+    grocerie* ptrend;
+    grocerie* ptr;
 public:
-    MovieList();
-    void createmovie(string,double,string,float,int,int,string,string,string);
-   void displaymovies();
-    Movie* searchname(string);
-    Movie* searchupc(string);
-    Movie* searchprice(double);
+    grocerieList();
+    void creategrocerie(string,double,string,float,int,int,string,string,string);
+   void displaygroceries();
+    grocerie* searchname(string);
+    grocerie* searchupc(string);
+    grocerie* searchprice(double);
 };
-MovieList::MovieList(){
+grocerieList::grocerieList(){
     ptrhead = NULL;
     ptrend = NULL;
 }
-void MovieList::createmovie(string name2,double price2,string upc2,float rating2,int copys2 ,int year2 ,string title2 ,string format2 ,string director2 ){
-    Movie *temp= new Movie(name2,price2,upc2,rating2,copys2,year2,title2,format2,director2);
+void grocerieList::creategrocerie(string name2,double price2,string upc2,float rating2,int copys2 ,int year2 ,string title2 ,string format2 ,string director2 ){
+    grocerie *temp= new grocerie(name2,price2,upc2,rating2,copys2,year2,title2,format2,director2);
     temp->setname(name2);
     temp->setprice(price2);
     temp->setupc(upc2);
@@ -47,15 +47,15 @@ void MovieList::createmovie(string name2,double price2,string upc2,float rating2
     }
     else
     {
-        ptrend->setNextMovie(temp);
+        ptrend->setNextgrocerie(temp);
         ptrend=temp;
     }
 }
-void MovieList::displaymovies(){
-    Movie *temp = new Movie;
+void grocerieList::displaygroceries(){
+    grocerie *temp = new grocerie;
     temp = ptrhead;
     cout<<endl;
-    cout<<"-----Movie list-----";
+    cout<<"-----grocerie list-----";
     cout<<endl;
     int x =1;
     while(temp!=NULL)
@@ -64,12 +64,12 @@ void MovieList::displaymovies(){
         cout <<x<<": ";
         temp->getinfo();
         cout<<endl;
-        temp = temp->getnextMovie();
+        temp = temp->getnextgrocerie();
         x++;
     }
     
 }
-Movie* MovieList::searchname(string name){
+grocerie* grocerieList::searchname(string name){
     
     {
         while (ptrhead != NULL)
@@ -79,13 +79,13 @@ Movie* MovieList::searchname(string name){
                 
                 return ptrhead;
             }
-            ptrhead = ptrhead->getnextMovie();
+            ptrhead = ptrhead->getnextgrocerie();
         }
         
     }
     return NULL;
 }
-Movie* MovieList::searchupc(string name){
+grocerie* grocerieList::searchupc(string name){
     {
         while (ptrhead != NULL)
         {
@@ -93,12 +93,12 @@ Movie* MovieList::searchupc(string name){
             {
                 return ptrhead;
             }
-            ptrhead = ptrhead->getnextMovie();
+            ptrhead = ptrhead->getnextgrocerie();
         }
     }
     return NULL;
 }
-Movie* MovieList::searchprice(double name){
+grocerie* grocerieList::searchprice(double name){
     {
         while (ptrhead != NULL)
         {
@@ -106,7 +106,7 @@ Movie* MovieList::searchprice(double name){
             {
                 return ptrhead;
             }
-            ptrhead = ptrhead->getnextMovie();
+            ptrhead = ptrhead->getnextgrocerie();
         }
     }
     return NULL;
