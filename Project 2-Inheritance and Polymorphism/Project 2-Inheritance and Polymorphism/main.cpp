@@ -10,17 +10,14 @@
 
 #include<iostream>
 #include<fstream>
-#include"Groceries.h"
-
-
-
+#include"grocerieList.hpp"
 #include<stdio.h>
-
+#include "LoadHelper.hpp"
 #endif
 using namespace std;
-
 MovieList* pullmovies();
-grocerieList* pullgroceries();
+GroceriesList* pullgroceries();
+ClothingList* pullClothing();
 void moviemenu();
 void mainmenu();
 void top10movies();
@@ -28,50 +25,27 @@ void viewcart();
 void moviesearch();
 void groceriesearch();
 void groceriemenu();
+void ClothingSearch();
+void ClothingMenu();
 
+//---------------------------------List Declaration--------------------------------------
 MovieList *movies = pullmovies();
-itemList *cart = new itemList();
-grocerieList *groceries = pullgroceries();
-void moviemenu(){
-    int selection;
-    cout<<"\n Einstinzon Movie Menu";
-    cout<<"\n Select an option from the list ";
-    cout<<"\n 1 - search through all the movies";
-    cout<<"\n 2 - view all the movies";
-    cout<<"\n 3 - View Your Current cart";
-    cout<<"\n 4 - return to main menu";
-    cout<<"\n Enter selection: ";
-    // read the input
-    cin>>selection;
-    switch(selection)
-    {
-        case 1 :{cout<<"\n send to search \n";
-            moviesearch();
-        }
-            break;
-            
-        case 2 :{cout<<"\n view all movies";
-            movies->displaymovies();
-        }
-            break;
-            
-        case 3 :{cout<<"\n view your current cart";
-            viewcart();
-        }
-            break;
-            
-        case 4 :{cout<<"\n return to main menu";
-            mainmenu();
-        }
-            break;
-        default : cout<<"\n Invalid selection";{
-            mainmenu();
-        }
-    }
-    cout<<"\n";
+itemList *cart = pullCart();
+GroceriesList *groceriess = pullgroceries();
+ClothingList *cloths = pullClothing();
 
+int main()
+{
+    mainmenu();
+    return 0;
 }
-
+void viewcart(){
+    cart->displayitems();
+    SaveCart(cart);
+    mainmenu();
+    
+}
+//---------------------------------main-menu Declaration--------------------------------------
 void mainmenu(){
     int selection;
     cout<<"\n Einstinzon Main Menu";
@@ -86,26 +60,23 @@ void mainmenu(){
     cin>>selection;
     switch(selection)
     {
-        case 1 :{cout<<"\n send to movies list \n";
+        case 1 :{
             moviemenu();
         }
             break;
-        case 2 :{cout<<"\n send to Groceries list ";
-            
+        case 2 :{
+            groceriemenu();
         }
             break;
-            
-        case 3 :{cout<<"\n send to Electronics list";
-            
+        case 3 :{
+            ClothingMenu();
         }
             break;
-            
-        case 4 :{cout<<"\n send to cart view ";
-             viewcart();
+        case 4 :{
+            viewcart();
         }
             break;
         case 5:{
-            cout<<"\n exit the program";
         }break;
         default : cout<<"\n Invalid selection";{
         }
@@ -115,54 +86,47 @@ void mainmenu(){
     
     
 }
-
-
-int main()
-{
-    mainmenu();
-    return 0;
-}
-
-MovieList* pullmovies(){
-    MovieList *movies = new MovieList();
-ifstream inFile;
-    int x=0;
-    int y;
-    string name2;
-    double price2;
-    string upc2;
-    float rating2;
-    int copys2;
-    int year2;
-    string title2;
-    string format2;
-    string director2;
-    inFile.open("movielist.txt");
-    if (!inFile) {
-        cerr << "Unable to open file datafile.txt";
-        exit(1);   // call system to stop
+//---------------------------------Movie Decleration-------------------------------------
+//we have the movie menu and the movie search here
+void moviemenu(){
+    int selection;
+    cout<<"\n Einstinzon Movie Menu";
+    cout<<"\n Select an option from the list ";
+    cout<<"\n 1 - search through all the movies";
+    cout<<"\n 2 - view all the movies";
+    cout<<"\n 3 - View Your Current cart";
+    cout<<"\n 4 - return to main menu";
+    cout<<"\n Enter selection: ";
+    // read the input
+    cin>>selection;
+    switch(selection)
+    {
+        case 1 :{
+            moviesearch();
+        }
+            break;
+            
+        case 2 :{
+            movies->displaymovies();
+            moviemenu();
+        }
+            break;
+            
+        case 3 :{
+            viewcart();
+        }
+            break;
+            
+        case 4 :{
+            mainmenu();
+        }
+            break;
+        default : cout<<"\n Invalid selection";{
+            exit(1);
+        }
     }
-    inFile >> x;
-    for( int y = 0;y<x;y++){
-        inFile >> name2;
-        inFile >> price2;
-        inFile >> upc2;
-        inFile >> rating2;
-        inFile >> copys2;
-        inFile >> year2;
-        inFile >> title2;
-        inFile >> format2;
-        inFile >> director2;
-        //
-        movies->createmovie( name2,  price2,  upc2,  rating2,  copys2,  year2,  title2,  format2,  director2);
-    }
-    cout<< "done";
-    return movies;
-}
-void viewcart(){
-    cart->displayitems();
-    mainmenu();
-    
+    cout<<"\n";
+
 }
 void moviesearch(){
     
@@ -178,14 +142,14 @@ void moviesearch(){
     cin>>selection;
     switch(selection)
     {
-        case 1 :{cout<<"\n search nameh \n";
+        case 1 :{
             cout<<"enter the name of the movie you would like to search for"<<endl;
             string name;
             cin >>name;
             Movie* search = movies->searchname(name);
             if(search== NULL){
                 cout<<"the movie you searched for dosent exist"<<endl;
-                 moviesearch();
+                moviesearch();
             }else{
                 search->getinfo();
                 cout<<"would you like to add this movie to your cart????"<<endl;
@@ -208,14 +172,14 @@ void moviesearch(){
                         moviemenu();
                     }
                 }else{
-                   cout<<"incorrcect entrie"<<endl;
+                    cout<<"incorrcect entrie"<<endl;
                     moviesearch();
                 }
             }
         }
             break;
             
-        case 2 :{cout<<"\n search upc";
+        case 2 :{
             cout<<"enter the upc of the movie you would like to search for"<<endl;
             string name;
             cin >>name;
@@ -252,7 +216,7 @@ void moviesearch(){
         }
             break;
             
-        case 3 :{cout<<"\n search price";
+        case 3 :{
             cout<<"enter the price of the movie you would like to search for"<<endl;
             
             double name;
@@ -260,7 +224,7 @@ void moviesearch(){
             Movie* search = movies->searchprice(name);
             if(search== NULL){
                 cout<<"the movie you searched for dosent exist"<<endl;
-                 moviesearch();
+                moviesearch();
             }else{
                 search->getinfo();
                 cout<<"would you like to add this movie to your cart????"<<endl;
@@ -290,7 +254,7 @@ void moviesearch(){
         }
             break;
             
-        case 4 :{cout<<"\n return to main menu";
+        case 4 :{
             mainmenu();
         }
             break;
@@ -301,3 +265,360 @@ void moviesearch(){
     }
     cout<<"\n";
 }
+
+
+//---------------------------------Grocerie Decleration-------------------------------------
+void groceriemenu(){
+    int selection;
+    cout<<"\n Einstinzon Grocerie Menu";
+    cout<<"\n Select an option from the list ";
+    cout<<"\n 1 - search through all the Groceries";
+    cout<<"\n 2 - view all the Groceries";
+    cout<<"\n 3 - View Your Current cart";
+    cout<<"\n 4 - return to main menu";
+    cout<<"\n Enter selection: ";
+    // read the input
+    cin>>selection;
+    switch(selection)
+    {
+        case 1 :{
+            groceriesearch();
+        }
+            break;
+            
+        case 2 :{
+            groceriess->displayGroceriess();
+            groceriemenu();
+        }
+            break;
+            
+        case 3 :{
+            viewcart();
+        }
+            break;
+            
+        case 4 :{
+            mainmenu();
+        }
+            break;
+        default : cout<<"\n Invalid selection";{
+            mainmenu();
+        }
+    }
+    
+}
+void groceriesearch(){
+    int selection;
+    cout<<"\n grocerie Search Menu";
+    cout<<"\n Select an option from the list ";
+    cout<<"\n 1 - search groceries by name";
+    cout<<"\n 2 - search groceries by upc";
+    cout<<"\n 3 - search groceries by price";
+    cout<<"\n 4 - return to main menu";
+    cout<<"\n Enter selection: ";
+    // read the input
+    cin>>selection;
+    switch(selection)
+    {
+        case 1 :{
+            cout<<"enter the name of the item you would like to search for"<<endl;
+            string name;
+            cin >>name;
+            Groceries *search = groceriess->searchname(name);
+            if(search== NULL){
+                cout<<"the item you searched for dosent exist"<<endl;
+                groceriesearch();
+            }else{
+                search->getinfo();
+                cout<<"would you like to add this movie to your cart????"<<endl;
+                cout<<"1-Yes"<<endl;
+                cout<<"2-no"<<endl;
+                int x;
+                cin>>x;
+                if(x==1){
+                    cart->createitem(search->getname(), search->getprice(), search->getupc());
+                    groceriemenu();
+                }else if (x==2){
+                    cout<<"would you like to search again"<<endl;
+                    cout<<"1-Yes"<<endl;
+                    cout<<"2-no"<<endl;
+                    int x;
+                    cin>>x;
+                    if(x==1){
+                        groceriesearch();
+                    }else{
+                        groceriemenu();
+                    }
+                }else{
+                    cout<<"incorrcect entrie"<<endl;
+                   groceriesearch();
+                }
+            }
+        }
+            break;
+            
+        case 2 :{
+            cout<<"enter the upc of the item you would like to search for"<<endl;
+            string name;
+            cin >>name;
+            Groceries* search = groceriess->searchupc(name);
+            if(search== NULL){
+                cout<<"the item you searched for dosent exist"<<endl;
+                groceriesearch();
+            }else{
+                search->getinfo();
+                cout<<"would you like to add this item to your cart????"<<endl;
+                cout<<"1-Yes"<<endl;
+                cout<<"2-no"<<endl;
+                int x;
+                cin>>x;
+                if(x==1){
+                    cart->createitem(search->getname(), search->getprice(), search->getupc());
+                    groceriesearch();
+                }else if (x==2){
+                    cout<<"would you like to search again"<<endl;
+                    cout<<"1-Yes"<<endl;
+                    cout<<"2-no"<<endl;
+                    int x;
+                    cin>>x;
+                    if(x==1){
+                        groceriesearch();
+                    }else{
+                        groceriemenu();
+                    }
+                }else{
+                    cout<<"incorrcect entrie"<<endl;
+                   groceriesearch();
+                }
+            }
+        }
+            break;
+            
+        case 3 :{
+            cout<<"enter the price of the item you would like to search for"<<endl;
+            
+            double name;
+            cin >>name;
+            Groceries *search = groceriess->searchprice(name);
+            if(search== NULL){
+                cout<<"the movie you searched for dosent exist"<<endl;
+                groceriesearch();
+            }else{
+                search->getinfo();
+                cout<<"would you like to add this item to your cart????"<<endl;
+                cout<<"1-Yes"<<endl;
+                cout<<"2-no"<<endl;
+                int x;
+                cin>>x;
+                if(x==1){
+                    cart->createitem(search->getname(), search->getprice(), search->getupc());
+                    groceriemenu();
+                }else if (x==2){
+                    cout<<"would you like to search again"<<endl;
+                    cout<<"1-Yes"<<endl;
+                    cout<<"2-no"<<endl;
+                    int x;
+                    cin>>x;
+                    if(x==1){
+                       groceriesearch();
+                    }else{
+                        groceriemenu();
+                    }
+                }else{
+                    cout<<"incorrcect entrie"<<endl;
+                    groceriesearch();
+                }
+            }
+        }
+            break;
+            
+        case 4 :{
+            mainmenu();
+        }
+            break;
+        default : cout<<"\n Invalid selection";{
+            groceriesearch();
+        }
+            
+    }
+    cout<<"\n";
+}
+
+//---------------------------------Clothing Decleration-------------------------------------
+void ClothingMenu(){
+    int selection;
+    cout<<"\n Einstinzon Clothing Menu";
+    cout<<"\n Select an option from the list ";
+    cout<<"\n 1 - search through all the Clothing";
+    cout<<"\n 2 - view all the Clothing";
+    cout<<"\n 3 - View Your Current cart";
+    cout<<"\n 4 - return to main menu";
+    cout<<"\n Enter selection: ";
+    // read the input
+    cin>>selection;
+    switch(selection)
+    {
+        case 1 :{
+            ClothingSearch();
+        }
+            break;
+            
+        case 2 :{
+            cloths->displayClothings();
+            ClothingMenu();
+        }
+            break;
+            
+        case 3 :{
+            viewcart();
+        }
+            break;
+            
+        case 4 :{
+            mainmenu();
+        }
+            break;
+        default : cout<<"\n Invalid selection";{
+            mainmenu();
+        }
+    }
+    cout<<"\n";
+    
+}
+void ClothingSearch(){
+    int selection;
+    cout<<"\n grocerie Search Menu";
+    cout<<"\n Select an option from the list ";
+    cout<<"\n 1 - search groceries by name";
+    cout<<"\n 2 - search groceries by upc";
+    cout<<"\n 3 - search groceries by price";
+    cout<<"\n 4 - return to main menu";
+    cout<<"\n Enter selection: ";
+    // read the input
+    cin>>selection;
+    switch(selection)
+    {
+        case 1 :{
+            cout<<"enter the name of the item you would like to search for"<<endl;
+            string name;
+            cin >>name;
+            Clothing *search = cloths->searchname(name);
+            if(search== NULL){
+                cout<<"the item you searched for dosent exist"<<endl;
+                ClothingSearch();
+            }else{
+                search->getinfo();
+                cout<<"would you like to add this movie to your cart????"<<endl;
+                cout<<"1-Yes"<<endl;
+                cout<<"2-no"<<endl;
+                int x;
+                cin>>x;
+                if(x==1){
+                    cart->createitem(search->getname(), search->getprice(), search->getupc());
+                    ClothingMenu();
+                }else if (x==2){
+                    cout<<"would you like to search again"<<endl;
+                    cout<<"1-Yes"<<endl;
+                    cout<<"2-no"<<endl;
+                    int x;
+                    cin>>x;
+                    if(x==1){
+                        ClothingSearch();
+                    }else{
+                        ClothingMenu();
+                    }
+                }else{
+                    cout<<"incorrcect entrie"<<endl;
+                    ClothingSearch();
+                }
+            }
+        }
+            break;
+            
+        case 2 :{cout<<"\n search upc";
+            cout<<"enter the upc of the item you would like to search for"<<endl;
+            string name;
+            cin >>name;
+            Clothing* search = cloths->searchupc(name);
+            if(search== NULL){
+                cout<<"the item you searched for dosent exist"<<endl;
+                ClothingSearch();
+            }else{
+                search->getinfo();
+                cout<<"would you like to add this item to your cart????"<<endl;
+                cout<<"1-Yes"<<endl;
+                cout<<"2-no"<<endl;
+                int x;
+                cin>>x;
+                if(x==1){
+                    cart->createitem(search->getname(), search->getprice(), search->getupc());
+                    ClothingSearch();
+                }else if (x==2){
+                    cout<<"would you like to search again"<<endl;
+                    cout<<"1-Yes"<<endl;
+                    cout<<"2-no"<<endl;
+                    int x;
+                    cin>>x;
+                    if(x==1){
+                        ClothingSearch();
+                    }else{
+                        ClothingMenu();
+                    }
+                }else{
+                    cout<<"incorrcect entrie"<<endl;
+                    ClothingMenu();
+                }
+            }
+        }
+            break;
+            
+        case 3 :{
+            cout<<"enter the price of the item you would like to search for"<<endl;
+            
+            double name;
+            cin >>name;
+            Clothing *search = cloths->searchprice(name);
+            if(search== NULL){
+                cout<<"the movie you searched for dosent exist"<<endl;
+                ClothingSearch();
+            }else{
+                search->getinfo();
+                cout<<"would you like to add this item to your cart????"<<endl;
+                cout<<"1-Yes"<<endl;
+                cout<<"2-no"<<endl;
+                int x;
+                cin>>x;
+                if(x==1){
+                    cart->createitem(search->getname(), search->getprice(), search->getupc());
+                    ClothingMenu();
+                }else if (x==2){
+                    cout<<"would you like to search again"<<endl;
+                    cout<<"1-Yes"<<endl;
+                    cout<<"2-no"<<endl;
+                    int x;
+                    cin>>x;
+                    if(x==1){
+                        ClothingSearch();
+                    }else{
+                        ClothingMenu();
+                    }
+                }else{
+                    cout<<"incorrcect entrie"<<endl;
+                    ClothingSearch();
+                }
+            }
+        }
+            break;
+            
+        case 4 :{
+            mainmenu();
+        }
+            break;
+        default : cout<<"\n Invalid selection";{
+            ClothingSearch();
+        }
+            
+    }
+    cout<<"\n";
+}
+

@@ -1,44 +1,44 @@
 //
-//  grocerieList.hpp
+//  GroceriesList.hpp
 //  Project 2: Inheritance and Polymorphism
 //
 //  Created by william wright on 11/14/17.
 //  Copyright © 2017 SilverTap. All rights reserved.
 //
 
-#ifndef grocerieList_hpp
-#define grocerieList_hpp
-#include"groceries.h"
+#ifndef GroceriesList_hpp
+#define GroceriesList_hpp
+#include"Groceries.h"
 #include <stdio.h>
 
-#endif /* grocerieList_hpp */
-class grocerieList{
+#endif /* GroceriesList_hpp */
+class GroceriesList{
 private:
-    grocerie* ptrhead;
-    grocerie* ptrend;
-    grocerie* ptr;
+    Groceries* ptrhead;
+    Groceries* ptrend;
+    Groceries* ptr;
 public:
-    grocerieList();
-    void creategrocerie(string,double,string,float,int,int,string,string,string);
-   void displaygroceries();
-    grocerie* searchname(string);
-    grocerie* searchupc(string);
-    grocerie* searchprice(double);
+    GroceriesList();
+    void createGroceries(string n,double p,string up,string ty,string exper,int call,int quan);
+   void displayGroceriess();
+    Groceries* searchname(string);
+    Groceries* searchupc(string);
+    Groceries* searchprice(double);
 };
-grocerieList::grocerieList(){
+GroceriesList::GroceriesList(){
     ptrhead = NULL;
     ptrend = NULL;
 }
-void grocerieList::creategrocerie(string name2,double price2,string upc2,float rating2,int copys2 ,int year2 ,string title2 ,string format2 ,string director2 ){
-    grocerie *temp= new grocerie(name2,price2,upc2,rating2,copys2,year2,title2,format2,director2);
-    temp->setname(name2);
-    temp->setprice(price2);
-    temp->setupc(upc2);
-    temp->setRating(rating2);
-    temp->setYear(year2);
-    temp->setTitle(title2);
-    temp->setFormat(format2);
-    temp->setDirector(director2);
+void GroceriesList::createGroceries(string n,double p,string up,string ty,string exper,int call,int quan ){
+    Groceries *temp= new Groceries(n,p,up,ty,exper,call,quan);
+    temp->setname(n);
+    temp->setprice(p);
+    temp->setupc(up);
+    temp->setFoodtype(ty);
+    temp->setExpiration(exper);
+    temp->setCalories(call);
+    temp->setQuantity(quan);
+    
     if(ptrhead==NULL)
     {
         ptrhead=temp;
@@ -47,15 +47,15 @@ void grocerieList::creategrocerie(string name2,double price2,string upc2,float r
     }
     else
     {
-        ptrend->setNextgrocerie(temp);
+        ptrend->setNextGroceries(temp);
         ptrend=temp;
     }
 }
-void grocerieList::displaygroceries(){
-    grocerie *temp = new grocerie;
+void GroceriesList::displayGroceriess(){
+    Groceries *temp = new Groceries;
     temp = ptrhead;
     cout<<endl;
-    cout<<"-----grocerie list-----";
+    cout<<"-----Groceries list-----";
     cout<<endl;
     int x =1;
     while(temp!=NULL)
@@ -64,12 +64,12 @@ void grocerieList::displaygroceries(){
         cout <<x<<": ";
         temp->getinfo();
         cout<<endl;
-        temp = temp->getnextgrocerie();
+        temp = temp->getNextGroceries();
         x++;
     }
     
 }
-grocerie* grocerieList::searchname(string name){
+Groceries* GroceriesList::searchname(string name){
     
     {
         while (ptrhead != NULL)
@@ -79,13 +79,13 @@ grocerie* grocerieList::searchname(string name){
                 
                 return ptrhead;
             }
-            ptrhead = ptrhead->getnextgrocerie();
+            ptrhead = ptrhead->getNextGroceries();
         }
         
     }
     return NULL;
 }
-grocerie* grocerieList::searchupc(string name){
+Groceries* GroceriesList::searchupc(string name){
     {
         while (ptrhead != NULL)
         {
@@ -93,12 +93,12 @@ grocerie* grocerieList::searchupc(string name){
             {
                 return ptrhead;
             }
-            ptrhead = ptrhead->getnextgrocerie();
+            ptrhead = ptrhead->getNextGroceries();
         }
     }
     return NULL;
 }
-grocerie* grocerieList::searchprice(double name){
+Groceries* GroceriesList::searchprice(double name){
     {
         while (ptrhead != NULL)
         {
@@ -106,7 +106,7 @@ grocerie* grocerieList::searchprice(double name){
             {
                 return ptrhead;
             }
-            ptrhead = ptrhead->getnextgrocerie();
+            ptrhead = ptrhead->getNextGroceries();
         }
     }
     return NULL;

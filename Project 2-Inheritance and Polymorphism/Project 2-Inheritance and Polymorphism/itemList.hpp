@@ -8,7 +8,7 @@
 
 #ifndef itemList_hpp
 #define itemList_hpp
-#include "Item.h"
+#include "ClothingList.h"
 #include <stdio.h>
 
 #endif /* itemList_hpp */
@@ -21,6 +21,8 @@ public:
     itemList();
     void createitem(string,double,string);
    void displayitems();
+    int getnumberofcart();
+    void cartlist();
 };
 itemList::itemList(){
     ptrhead = NULL;
@@ -42,6 +44,33 @@ void itemList::createitem(string name2, double price2, string upc2){
         ptrend->setnextitem(temp);
         ptrend=temp;
     }
+}
+int itemList::getnumberofcart(){
+    int i=0;
+    item *temp = new item;
+    temp = ptrhead;
+    while(temp!=NULL)
+    {
+        temp = temp->getnextitem();
+        i++;
+    }
+    return i;
+}
+void itemList::cartlist(){
+    ofstream myfile ("CartList.txt");
+    if (myfile.is_open())
+    {
+    item *temp = new item;
+    temp = ptrhead;
+    int x=1;
+        myfile << getnumberofcart();
+    while(temp!=NULL)
+    {
+      myfile << temp->getinfoformated();
+        temp = temp->getnextitem();
+    }
+        myfile.close();
+}
 }
 void itemList::displayitems(){
     item *temp = new item;

@@ -1,6 +1,4 @@
 
-
-
 #ifndef Item_h
 #define Item_h
 #include <stdio.h>
@@ -26,6 +24,7 @@ public:
     item* getnextitem();
     void getinfo();
     item* makeitem();
+    string getinfoformated();
 };
 
 item::item(){
@@ -64,6 +63,10 @@ string item::getupc(){
 }
 void item::getinfo(){
     cout<<"Name: "<<getname()<<" Price: "<< getprice()<<"$ UPC: "<< getupc();
+}
+string item::getinfoformated(){
+    
+    return (" "+name+" "+std::to_string(price)+" "+upc+"");
 }
 item* item::makeitem(){
     item* temp = new item();
