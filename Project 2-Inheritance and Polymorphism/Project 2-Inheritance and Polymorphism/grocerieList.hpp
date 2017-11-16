@@ -38,7 +38,6 @@ void GroceriesList::createGroceries(string n,double p,string up,string ty,string
     temp->setExpiration(exper);
     temp->setCalories(call);
     temp->setQuantity(quan);
-    
     if(ptrhead==NULL)
     {
         ptrhead=temp;
@@ -70,7 +69,6 @@ void GroceriesList::displayGroceriess(){
     
 }
 Groceries* GroceriesList::searchname(string name){
-    
     {
         while (ptrhead != NULL)
         {

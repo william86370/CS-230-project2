@@ -67,7 +67,6 @@ void ClothingList::displayClothings(){
         temp = temp->getnextclothing();
         x++;
     }
-    
 }
 Clothing* ClothingList::searchname(string name){
     
@@ -76,12 +75,10 @@ Clothing* ClothingList::searchname(string name){
         {
             if (ptrhead->getname() == name)
             {
-                
                 return ptrhead;
             }
             ptrhead = ptrhead->getnextclothing();
         }
-        
     }
     return NULL;
 }

@@ -48,19 +48,11 @@ public:
     void setNextMovie(Movie* );
     void getinfo();
 };
-
 //---------------------------------------------------------------------------//
 //class declerations my dood
-
-
-
-
-
-
 void Movie::setNextMovie(Movie* movi){
     nextMovie = movi;
 }
-
 Movie* Movie::getnextMovie(){
     return nextMovie;
 }

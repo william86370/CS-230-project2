@@ -24,6 +24,7 @@ public:
     Movie* searchname(string);
     Movie* searchupc(string);
     Movie* searchprice(double);
+    Movie* searchfromnumber(int);
 };
 MovieList::MovieList(){
     ptrhead = NULL;
@@ -60,28 +61,23 @@ void MovieList::displaymovies(){
     int x =1;
     while(temp!=NULL)
     {
-        
         cout <<x<<": ";
         temp->getinfo();
         cout<<endl;
         temp = temp->getnextMovie();
         x++;
     }
-    
 }
 Movie* MovieList::searchname(string name){
-    
     {
         while (ptrhead != NULL)
         {
             if (ptrhead->getname() == name)
             {
-                
                 return ptrhead;
             }
             ptrhead = ptrhead->getnextMovie();
         }
-        
     }
     return NULL;
 }
@@ -110,4 +106,19 @@ Movie* MovieList::searchprice(double name){
         }
     }
     return NULL;
+}
+Movie* MovieList::searchfromnumber(int y){
+    int x =1;
+    while (ptrhead != NULL)
+    {
+        if (x==y)
+        {
+            return ptrhead;
+        }
+        ptrhead = ptrhead->getnextMovie();
+        x++;
+    }
+    
+    return NULL;
+
 }

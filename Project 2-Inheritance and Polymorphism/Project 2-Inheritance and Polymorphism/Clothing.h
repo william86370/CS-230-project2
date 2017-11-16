@@ -14,9 +14,8 @@ class Clothing: public item
 		string sizePants; //Large, medium, small (for shirts)
 		int sizeL; //length
 		int sizeW; //width
-		int quantity;
+		int quantity; //amount of clothing left
     Clothing* nextclothing;
-	
 	public:
     Clothing();
     Clothing(string n,double p ,string u,string t,string g,string s,int l,int w,int q);

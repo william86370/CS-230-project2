@@ -52,7 +52,7 @@ void mainmenu(){
     cout<<"\nPlease Select the Department That You Would like to Shop in";
     cout<<"\n 1 - Movies";
     cout<<"\n 2 - Groceries";
-    cout<<"\n 3 - Electronics";
+    cout<<"\n 3 - Clothing";
     cout<<"\n 4 - View Your Current cart";
     cout<<"\n 5 - exit the program";
     cout<<"\n Enter selection: ";
@@ -79,8 +79,8 @@ void mainmenu(){
         case 5:{
         }break;
         default : cout<<"\n Invalid selection";{
+            mainmenu();
         }
-            
     }
     cout<<"\n";
     
@@ -104,29 +104,40 @@ void moviemenu(){
         case 1 :{
             moviesearch();
         }
-            break;
-            
         case 2 :{
             movies->displaymovies();
+            cout<<"enter the number of the movie you would like to add to cart"<<endl;
+            int x;
+            cin >> x;
+            Movie* search = movies->searchfromnumber(x);
+            if(search== NULL){
+                cout<<"the movie you searched for dosent exist"<<endl;
+                moviesearch();
+            }else{
+                search->getinfo();
+                cout<<"would you like to add this movie to your cart????"<<endl;
+                cout<<"1-Yes"<<endl;
+                cout<<"2-no"<<endl;
+                int x;
+                cin>>x;
+                if(x==1){
+                    cart->createitem(search->getname(), search->getprice(), search->getupc());
+                    moviemenu();
+                }else if (x==2){
             moviemenu();
         }
-            break;
-            
+            }
+        }
         case 3 :{
             viewcart();
         }
-            break;
-            
         case 4 :{
             mainmenu();
         }
-            break;
         default : cout<<"\n Invalid selection";{
             exit(1);
         }
     }
-    cout<<"\n";
-    
 }
 void moviesearch(){
     

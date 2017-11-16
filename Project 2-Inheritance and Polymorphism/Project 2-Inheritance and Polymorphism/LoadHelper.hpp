@@ -5,13 +5,17 @@
 //  Created by william wright on 11/16/17.
 //  Copyright © 2017 SilverTap. All rights reserved.
 //
-
+//XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE
+//
 #ifndef LoadHelper_hpp
 #define LoadHelper_hpp
 #include<iostream>
 #include <stdio.h>
 #include <fstream>
-
+//when we are pulling the files if we ever encounter an error
+//we have to call the system to stop becuase this is the one thing that cannot fail
+//---------------------------------pull-movies Declaration--------------------------------------
+//in this method we pull the information from the file assiated with the method and add to a list
 MovieList* pullmovies(){
     MovieList *movies = new MovieList();
     ifstream inFile;
@@ -46,6 +50,8 @@ MovieList* pullmovies(){
     }
     return movies;
 }
+//---------------------------------pull-groceries Declaration--------------------------------------
+//in this method we pull the information from the file assiated with the method and add to a list
 GroceriesList* pullgroceries(){
     GroceriesList *gro = new GroceriesList();
     ifstream inFile;
@@ -71,11 +77,12 @@ GroceriesList* pullgroceries(){
         inFile >> expiration2;
         inFile >> calorie2;
         inFile >> quantity2;
-        
         gro->createGroceries(name2, price2, upc2, type2, expiration2, calorie2, quantity2);
     }
     return gro;
 }
+//---------------------------------pull-Clothing Declaration--------------------------------------
+//in this method we pull the information from the file assiated with the method and add to a list
 ClothingList* pullClothing(){
     ClothingList *gro = new ClothingList();
     ifstream inFile;
@@ -92,7 +99,6 @@ ClothingList* pullClothing(){
     int quantity;
     inFile.open("ClothingList.txt");
     if (!inFile) {
-        cerr << "Unable to open file grocerie.txt";
         exit(1);   // call system to stop
     }
     inFile >> x;
@@ -110,6 +116,8 @@ ClothingList* pullClothing(){
     }
     return gro;
 }
+//---------------------------------pull-cart Declaration--------------------------------------
+//when we first start up the program we grab the contents of the users cart from storage
 itemList* pullCart(){
     itemList *gro = new itemList();
     ifstream inFile;
@@ -120,7 +128,7 @@ itemList* pullCart(){
     string upc2;
     inFile.open("CartList.txt");
     if (!inFile) {
-        
+        //if the file fails to load we quit the program becuase something is wrong xD
         exit(1);   // call system to stop
     }
     inFile >> x;
@@ -134,11 +142,13 @@ itemList* pullCart(){
     return gro;
 
 }
+//---------------------------------save-cart Declaration--------------------------------------
+//in this method we save the contents of the users cart every time a new item is added
 void SaveCart(itemList* cart){
     if( remove( "CartList.txt" ) != 0 ){
-        
+        //delete the old cart file before remaking to avoid diffucatly saving
     }else{
-       
+        //pass off to ItemList for the saving of the list
          cart->cartlist();
 }
 }
