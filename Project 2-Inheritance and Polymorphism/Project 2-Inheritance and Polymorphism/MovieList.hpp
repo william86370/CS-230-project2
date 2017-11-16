@@ -21,6 +21,9 @@ public:
     MovieList();
     void createmovie(string,double,string,float,int,int,string,string,string);
    void displaymovies();
+    Movie* searchname(string);
+    Movie* searchupc(string);
+    Movie* searchprice(double);
 };
 MovieList::MovieList(){
     ptrhead = NULL;
@@ -59,4 +62,54 @@ void MovieList::displaymovies(){
     }
     
 }
+Movie* MovieList::searchname(string name){
+    
+    {
+        while (ptrhead != NULL)
+        {
+            if (ptrhead->getname() == name)
+            {
+                printf("key found\n");
+                return ptrhead;
+            }
+            ptrhead = ptrhead->getnextMovie();
+        }
+        printf("Key not found\n");
+    }
+    return NULL;
+}
+Movie* MovieList::searchupc(string name){
+    
+    {
+        while (ptrhead != NULL)
+        {
+            if (ptrhead->getupc() == name)
+            {
+                printf("key found\n");
+                return ptrhead;
+            }
+            ptrhead = ptrhead->getnextMovie();
+        }
+        printf("Key not found\n");
+    }
+    return NULL;
+}
+
+Movie* MovieList::searchprice(double name){
+    
+    {
+        while (ptrhead != NULL)
+        {
+            if (ptrhead->getprice() == name)
+            {
+                printf("key found\n");
+                return ptrhead;
+            }
+            ptrhead = ptrhead->getnextMovie();
+        }
+        printf("Key not found\n");
+    }
+    return NULL;
+}
+
 

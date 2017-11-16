@@ -12,6 +12,7 @@ private:
     string name;
     double price;
     string upc;
+    item* nextitem;
 public:
     item();
     item(string,double,string);
@@ -21,7 +22,12 @@ public:
     void setprice(double);
     string getupc();
     void setupc(string);
+    void setnextitem(item*);
+    item* getnextitem();
+    void getinfo();
+    item* makeitem();
 };
+
 item::item(){
     name = "";
     price = NULL;
@@ -31,6 +37,12 @@ item::item(string nameh,double pricei,string upc2){
     name = nameh;
     price = pricei;
     upc  = upc2;
+}
+void item::setnextitem(item* next){
+    nextitem = next;
+}
+item* item::getnextitem(){
+    return nextitem;
 }
 string item::getname(){
     return name;
@@ -50,4 +62,13 @@ void item::setupc(string upc2){
 string item::getupc(){
     return upc;
 }
-
+void item::getinfo(){
+    cout<<getname()<<" "<< getprice()<<" "<< getupc();
+}
+item* item::makeitem(){
+    item* temp = new item();
+    temp->setname(name);
+    temp->setupc(upc);
+    temp->setprice(price);
+    return temp;
+}
