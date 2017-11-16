@@ -63,7 +63,7 @@ string item::getupc(){
     return upc;
 }
 void item::getinfo(){
-    cout<<getname()<<" "<< getprice()<<" "<< getupc();
+    cout<<"Name: "<<getname()<<" Price: "<< getprice()<<"$ UPC: "<< getupc();
 }
 item* item::makeitem(){
     item* temp = new item();

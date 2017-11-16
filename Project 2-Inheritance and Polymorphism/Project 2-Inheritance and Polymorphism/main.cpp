@@ -20,20 +20,24 @@
 using namespace std;
 
 MovieList* pullmovies();
+grocerieList* pullgroceries();
 void moviemenu();
 void mainmenu();
 void top10movies();
 void viewcart();
 void moviesearch();
+void groceriesearch();
+void groceriemenu();
+
 MovieList *movies = pullmovies();
 itemList *cart = new itemList();
-
+grocerieList *groceries = pullgroceries();
 void moviemenu(){
     int selection;
     cout<<"\n Einstinzon Movie Menu";
     cout<<"\n Select an option from the list ";
     cout<<"\n 1 - search through all the movies";
-    cout<<"\n 2 - view the top 10 movies";
+    cout<<"\n 2 - view all the movies";
     cout<<"\n 3 - View Your Current cart";
     cout<<"\n 4 - return to main menu";
     cout<<"\n Enter selection: ";
@@ -46,8 +50,8 @@ void moviemenu(){
         }
             break;
             
-        case 2 :{cout<<"\n view top 10 movies";
-            
+        case 2 :{cout<<"\n view all movies";
+            movies->displaymovies();
         }
             break;
             
@@ -61,15 +65,11 @@ void moviemenu(){
         }
             break;
         default : cout<<"\n Invalid selection";{
+            mainmenu();
         }
-            
     }
     cout<<"\n";
-    
-    
-    
-    
-    
+
 }
 
 void mainmenu(){
@@ -161,6 +161,7 @@ ifstream inFile;
 }
 void viewcart(){
     cart->displayitems();
+    mainmenu();
     
 }
 void moviesearch(){

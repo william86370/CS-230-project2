@@ -47,9 +47,12 @@ void itemList::displayitems(){
     item *temp = new item;
     temp = ptrhead;
     int x=1;
+    cout<<endl;
+    cout<<"-----cart list-----";
+    cout<<endl;
     while(temp!=NULL)
     {
-        cout<<"cart list
+        cout <<x<<": ";
         temp->getinfo();
         cout<<endl;
         temp = temp->getnextitem();

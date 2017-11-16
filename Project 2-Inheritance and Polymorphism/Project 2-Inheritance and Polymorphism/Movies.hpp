@@ -126,7 +126,7 @@ string  Movie::getDirector(){
     return director;
 }
 void Movie::getinfo(){
-    cout<<getname()<<" "<< getprice()<<" "<< getupc()<<" "<<rating<<" "<<copy<<" "<<year<<" "<<title<<" "<<format<<" "<<director<<endl;
+    cout<<"Name: "<<getname()<<" Price: "<< getprice()<<"$ Upc: "<< getupc()<<" Raiting: "<<rating<<" Copys: "<<copy<<" Release year: "<<year<<" Title: "<<title<<" Format: "<<format<<" Director: "<<director<<endl;
 }
 //---------------------------------------------------------------------------//
 //end class decleration
