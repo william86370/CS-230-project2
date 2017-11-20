@@ -23,34 +23,39 @@ public:
     void sort();
 };
 void itemList::sort(){
-    item * temphead = ptrhead;
-    //    ListNode * tempnode = NULL;
+    item *temphead = ptrhead;
     string tempname;
-    double tempprice;
     string tempupc;
+    double tempprice;
     int counter = 0;
     while (temphead)
     {
         temphead = temphead->getnextitem();
         counter++;
     }
-    for (int i=0; i<counter; i++)
+    temphead = ptrhead;
+    
+    for (int j=0; j<counter; j++)
     {
-        for (int j=0; j<counter-i; j++)
+        while (temphead->getnextitem())
         {
             if (temphead->getprice() > temphead->getnextitem()->getprice())
             {
                 tempname = temphead->getname();
-                tempupc = temphead->getupc();
-                tempprice = temphead->getprice();
                 temphead->setname(temphead->getnextitem()->getname());
                 temphead->getnextitem()->setname(tempname);
+                
+                tempprice = temphead->getprice();
                 temphead->setprice(temphead->getnextitem()->getprice());
-                temphead->getnextitem()->setname(tempname);
-                temphead->setupc(temphead->getnextitem()->getupc());
-                temphead->getnextitem()->setupc(tempname);
+                temphead->getnextitem()->setprice(tempprice);
+                
+                tempupc = temphead->getupc();
+                temphead->setname(temphead->getnextitem()->getupc());
+                temphead->getnextitem()->setupc(tempupc);
             }
+            temphead = temphead->getnextitem();
         }
+        temphead = ptrhead;
     }
 }
 itemList::itemList(){
@@ -64,6 +69,7 @@ void itemList::createitem(string name2, double price2, string upc2){
     temp->setupc(upc2);
     if(ptrhead==NULL)
     {
+        temp->setnextitem(NULL);
         ptrhead=temp;
         ptrend=temp;
         temp=NULL;
