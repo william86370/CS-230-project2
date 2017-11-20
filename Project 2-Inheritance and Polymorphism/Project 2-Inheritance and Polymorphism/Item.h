@@ -43,6 +43,7 @@ item::item(string nameh,double pricei,string upc2){
     name = nameh;
     price = pricei;
     upc  = upc2;
+    price = NULL;
 }
 void item::setnextitem(item* next){
     //returns nothing @paramators is an item list
@@ -81,5 +82,6 @@ item* item::makeitem(){
     temp->setname(name);
     temp->setupc(upc);
     temp->setprice(price);
+    temp->nextitem = NULL;
     return temp;
 }

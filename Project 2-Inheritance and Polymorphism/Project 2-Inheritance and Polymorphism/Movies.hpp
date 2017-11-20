@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "Electronics.hpp"
+#include "ElectronicsList.h"
 #endif /* Movies_hpp */
 using namespace std;
 class Movie: public item //class Movie,public Item
@@ -65,6 +65,7 @@ format=" ";
 rating=0.0;
  copy=0;
  year=0;
+    nextMovie = NULL;
 }
 Movie::Movie(string name2,double price2,string upc2,float rating2,int copys2 ,int year2 ,string title2 ,string format2 ,string director2 ){
     item(name2,price2,upc2);
@@ -74,6 +75,7 @@ Movie::Movie(string name2,double price2,string upc2,float rating2,int copys2 ,in
      rating=rating2;
      copy=copys2;
      year=year2;
+    nextMovie = NULL;
 }
 void Movie::setYear(int y)
 {

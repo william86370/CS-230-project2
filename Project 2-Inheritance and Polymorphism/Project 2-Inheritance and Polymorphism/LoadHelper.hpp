@@ -1,10 +1,7 @@
 //
 //  LoadHelper.hpp
 //  Project 2: Inheritance and Polymorphism
-//
-//  Created by william wright on 11/16/17.
-//  Copyright © 2017 SilverTap. All rights reserved.
-//
+
 //XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE XCODE 4 LYFE
 //
 #ifndef LoadHelper_hpp
@@ -115,6 +112,34 @@ ClothingList* pullClothing(){
         gro->CreateClothing(name2, price2, upc2, type, gender, sizePants, sizeL, sizeW, quantity);
     }
     return gro;
+}//---------------------------------pull-electronics Declaration--------------------------------------
+//in this method we pull the information from the file assiated with the method and add to a list
+ElectronicsList* pulleletronics(){
+    ElectronicsList *gro = new ElectronicsList();
+    ifstream inFile;
+    int x=0;
+    int y;
+    string name2;
+    double price2;
+    string upc2;
+    string brandName;
+    string modelNum;
+    string type;
+    inFile.open("ElectronicsList.txt");
+    if (!inFile) {
+        exit(1);   // call system to stop
+    }
+    inFile >> x;
+    for( int y = 0;y<x;y++){
+        inFile >> name2;
+        inFile >> price2;
+        inFile >> upc2;
+        inFile >> brandName;
+        inFile >> modelNum;
+        inFile >> type;
+        gro->createelectronic( name2,  price2,  upc2,  brandName,  modelNum,  type);
+    }
+    return gro;
 }
 //---------------------------------pull-cart Declaration--------------------------------------
 //when we first start up the program we grab the contents of the users cart from storage
@@ -142,6 +167,7 @@ itemList* pullCart(){
     return gro;
 
 }
+
 //---------------------------------save-cart Declaration--------------------------------------
 //in this method we save the contents of the users cart every time a new item is added
 void SaveCart(itemList* cart){

@@ -1,10 +1,7 @@
 //
 //  ClothingList.hpp
 //  Project 2: Inheritance and Polymorphism
-//
-//  Created by william wright on 11/14/17.
-//  Copyright © 2017 SilverTap. All rights reserved.
-//
+
 
 #ifndef ClothingList_hpp
 #define ClothingList_hpp

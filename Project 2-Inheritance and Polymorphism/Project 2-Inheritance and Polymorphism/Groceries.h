@@ -44,6 +44,7 @@ Groceries::Groceries(string n,double p,string up,string ty,string exper,int call
     expiration = exper;
     calorie = call;
     quantity = quan;
+    NextGroceries = NULL;
 }
 void Groceries::setFoodtype(string f)
 {

@@ -1,10 +1,7 @@
 //
 //  itemList.hpp
 //  Project 2: Inheritance and Polymorphism
-//
-//  Created by william wright on 11/14/17.
-//  Copyright © 2017 SilverTap. All rights reserved.
-//
+
 
 #ifndef itemList_hpp
 #define itemList_hpp
@@ -23,7 +20,39 @@ public:
    void displayitems();
     int getnumberofcart();
     void cartlist();
+    void sort();
 };
+void itemList::sort(){
+    item * temphead = ptrhead;
+    //    ListNode * tempnode = NULL;
+    string tempname;
+    double tempprice;
+    string tempupc;
+    int counter = 0;
+    while (temphead)
+    {
+        temphead = temphead->getnextitem();
+        counter++;
+    }
+    for (int i=0; i<counter; i++)
+    {
+        for (int j=0; j<counter-i; j++)
+        {
+            if (temphead->getprice() > temphead->getnextitem()->getprice())
+            {
+                tempname = temphead->getname();
+                tempupc = temphead->getupc();
+                tempprice = temphead->getprice();
+                temphead->setname(temphead->getnextitem()->getname());
+                temphead->getnextitem()->setname(tempname);
+                temphead->setprice(temphead->getnextitem()->getprice());
+                temphead->getnextitem()->setname(tempname);
+                temphead->setupc(temphead->getnextitem()->getupc());
+                temphead->getnextitem()->setupc(tempname);
+            }
+        }
+    }
+}
 itemList::itemList(){
     ptrhead = NULL;
     ptrend = NULL;

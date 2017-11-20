@@ -1,10 +1,6 @@
 //
 //  main.cpp
 //  Project 2: Inheritance and Polymorphism
-//
-//  Created by william wright on 11/2/17.
-//  Copyright © 2017 SilverTap. All rights reserved.
-//
 #ifndef main_cpp
 #define main_cpp
 
@@ -27,12 +23,15 @@ void groceriesearch();
 void groceriemenu();
 void ClothingSearch();
 void ClothingMenu();
+void ElectronicsSearch();
+void ElectronicsMenu();
 
 //---------------------------------List Declaration--------------------------------------
 MovieList *movies = pullmovies();
 itemList *cart = pullCart();
 GroceriesList *groceriess = pullgroceries();
 ClothingList *cloths = pullClothing();
+ElectronicsList *electrons = pulleletronics();
 
 int main()
 {
@@ -40,9 +39,49 @@ int main()
     return 0;
 }
 void viewcart(){
-    cart->displayitems();
-    SaveCart(cart);
-    mainmenu();
+    int selection;
+    cout<<"\n Einstinzon Cart Menu";
+    cout<<"\n Please Select what you would like to do with your cart";
+    cout<<"\n 1 - view your cart";
+    cout<<"\n 2 - clear your cart";
+    cout<<"\n 3 - sort your cart";
+    cout<<"\n 4 - return to main menu";
+    cout<<"\n Enter selection: ";
+    // read the input
+    cin>>selection;
+    switch(selection)
+    {
+        case 1 :{
+            cart->displayitems();
+            SaveCart(cart);
+            viewcart();
+        }
+            break;
+        case 2 :{
+            cart = new itemList();
+            SaveCart(cart);
+            viewcart();
+        }
+            break;
+        case 3 :{
+            cart->sort();
+            cart->displayitems();
+            SaveCart(cart);
+            viewcart();
+        }
+            break;
+        case 4 :{
+            mainmenu();
+        }
+            break;
+        
+        default : cout<<"\n Invalid selection";{
+            mainmenu();
+        }
+    }
+    cout<<"\n";
+    
+    
     
 }
 //---------------------------------main-menu Declaration--------------------------------------
@@ -53,8 +92,9 @@ void mainmenu(){
     cout<<"\n 1 - Movies";
     cout<<"\n 2 - Groceries";
     cout<<"\n 3 - Clothing";
-    cout<<"\n 4 - View Your Current cart";
-    cout<<"\n 5 - exit the program";
+    cout<<"\n 4 - Electronics";
+    cout<<"\n 5 - View Your Current cart";
+    cout<<"\n 6 - exit the program";
     cout<<"\n Enter selection: ";
     // read the input
     cin>>selection;
@@ -73,10 +113,11 @@ void mainmenu(){
         }
             break;
         case 4 :{
-            viewcart();
+            ElectronicsMenu();
         }
             break;
         case 5:{
+            viewcart();
         }break;
         default : cout<<"\n Invalid selection";{
             mainmenu();
@@ -627,6 +668,184 @@ void ClothingSearch(){
             break;
         default : cout<<"\n Invalid selection";{
             ClothingSearch();
+        }
+            
+    }
+    cout<<"\n";
+}
+
+//---------------------------------Electronics Decleration-------------------------------------
+void ElectronicsMenu(){
+    int selection;
+    cout<<"\n Einstinzon Electronics Menu";
+    cout<<"\n Select an option from the list ";
+    cout<<"\n 1 - search through all the Electronics";
+    cout<<"\n 2 - view all the Electronics";
+    cout<<"\n 3 - View Your Current cart";
+    cout<<"\n 4 - return to main menu";
+    cout<<"\n Enter selection: ";
+    // read the input
+    cin>>selection;
+    switch(selection)
+    {
+        case 1 :{
+            ElectronicsSearch();
+        }
+            break;
+            
+        case 2 :{
+            electrons->displayelectronics();
+            ElectronicsMenu();
+        }
+            break;
+            
+        case 3 :{
+            viewcart();
+        }
+            break;
+            
+        case 4 :{
+            mainmenu();
+        }
+            break;
+        default : cout<<"\n Invalid selection";{
+            mainmenu();
+        }
+    }
+    cout<<"\n";
+    
+}
+void ElectronicsSearch(){
+    int selection;
+    cout<<"\n Electronics Search Menu";
+    cout<<"\n Select an option from the list ";
+    cout<<"\n 1 - search Electronics by name";
+    cout<<"\n 2 - search Electronics by upc";
+    cout<<"\n 3 - search Electronics by price";
+    cout<<"\n 4 - return to main menu";
+    cout<<"\n Enter selection: ";
+    // read the input
+    cin>>selection;
+    switch(selection)
+    {
+        case 1 :{
+            cout<<"enter the name of the item you would like to search for"<<endl;
+            string name;
+            cin >>name;
+            Clothing *search = cloths->searchname(name);
+            if(search== NULL){
+                cout<<"the item you searched for dosent exist"<<endl;
+               ElectronicsSearch();
+            }else{
+                search->getinfo();
+                cout<<"would you like to add this Item to your cart????"<<endl;
+                cout<<"1-Yes"<<endl;
+                cout<<"2-no"<<endl;
+                int x;
+                cin>>x;
+                if(x==1){
+                    cart->createitem(search->getname(), search->getprice(), search->getupc());
+                    ElectronicsMenu();
+                }else if (x==2){
+                    cout<<"would you like to search again"<<endl;
+                    cout<<"1-Yes"<<endl;
+                    cout<<"2-no"<<endl;
+                    int x;
+                    cin>>x;
+                    if(x==1){
+                        ElectronicsSearch();
+                    }else{
+                        ElectronicsMenu();
+                    }
+                }else{
+                    cout<<"incorrcect entrie"<<endl;
+                    ElectronicsSearch();
+                }
+            }
+        }
+            break;
+            
+        case 2 :{cout<<"\n search upc";
+            cout<<"enter the upc of the item you would like to search for"<<endl;
+            string name;
+            cin >>name;
+            Clothing* search = cloths->searchupc(name);
+            if(search== NULL){
+                cout<<"the item you searched for dosent exist"<<endl;
+                ElectronicsSearch();
+            }else{
+                search->getinfo();
+                cout<<"would you like to add this item to your cart????"<<endl;
+                cout<<"1-Yes"<<endl;
+                cout<<"2-no"<<endl;
+                int x;
+                cin>>x;
+                if(x==1){
+                    cart->createitem(search->getname(), search->getprice(), search->getupc());
+                    ElectronicsSearch();
+                }else if (x==2){
+                    cout<<"would you like to search again"<<endl;
+                    cout<<"1-Yes"<<endl;
+                    cout<<"2-no"<<endl;
+                    int x;
+                    cin>>x;
+                    if(x==1){
+                        ElectronicsSearch();
+                    }else{
+                        ElectronicsMenu();
+                    }
+                }else{
+                    cout<<"incorrcect entrie"<<endl;
+                    ElectronicsMenu();
+                }
+            }
+        }
+            break;
+            
+        case 3 :{
+            cout<<"enter the price of the item you would like to search for"<<endl;
+            
+            double name;
+            cin >>name;
+            Clothing *search = cloths->searchprice(name);
+            if(search== NULL){
+                cout<<"the movie you searched for dosent exist"<<endl;
+                ElectronicsSearch();
+            }else{
+                search->getinfo();
+                cout<<"would you like to add this item to your cart????"<<endl;
+                cout<<"1-Yes"<<endl;
+                cout<<"2-no"<<endl;
+                int x;
+                cin>>x;
+                if(x==1){
+                    cart->createitem(search->getname(), search->getprice(), search->getupc());
+                    ElectronicsMenu();
+                }else if (x==2){
+                    cout<<"would you like to search again"<<endl;
+                    cout<<"1-Yes"<<endl;
+                    cout<<"2-no"<<endl;
+                    int x;
+                    cin>>x;
+                    if(x==1){
+                        ElectronicsSearch();
+                    }else{
+                        ElectronicsMenu();
+                    }
+                }else{
+                    cout<<"incorrcect entrie"<<endl;
+                    ElectronicsSearch();
+                }
+            }
+        }
+            break;
+            
+        case 4 :{
+            mainmenu();
+        }
+            break;
+        default : cout<<"\n Invalid selection";{
+           ElectronicsSearch();
         }
             
     }

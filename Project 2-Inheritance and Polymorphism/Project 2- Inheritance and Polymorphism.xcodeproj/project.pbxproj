@@ -30,6 +30,8 @@
 		100F80FA1FBDEF90002E2295 /* itemList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = itemList.hpp; sourceTree = "<group>"; };
 		103303B41FB21EB90074AC56 /* Electronics.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Electronics.hpp; sourceTree = "<group>"; };
 		103303B81FB21F4E0074AC56 /* Movies.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Movies.hpp; sourceTree = "<group>"; };
+		109C2C531FC2559100FCB6BE /* ElectronicsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElectronicsList.h; sourceTree = "<group>"; };
+		109C2C541FC2623A00FCB6BE /* ElectronicsList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ElectronicsList.txt; sourceTree = "<group>"; };
 		10AE8A6F1FBDFFAE00A55E26 /* grocerieList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = grocerieList.hpp; sourceTree = "<group>"; };
 		10AE8A701FBE0BAF00A55E26 /* grocerieList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grocerieList.txt; sourceTree = "<group>"; };
 		10AE8A711FBE0F6800A55E26 /* Clothing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Clothing.h; sourceTree = "<group>"; };
@@ -79,10 +81,12 @@
 				10AE8A711FBE0F6800A55E26 /* Clothing.h */,
 				100F80F41FB4C94E002E2295 /* Groceries.h */,
 				100F80F81FBB5AA5002E2295 /* MovieList.hpp */,
+				109C2C531FC2559100FCB6BE /* ElectronicsList.h */,
 				10AE8A731FBE0FE700A55E26 /* ClothingList.h */,
 				10AE8A6F1FBDFFAE00A55E26 /* grocerieList.hpp */,
 				100F80FA1FBDEF90002E2295 /* itemList.hpp */,
 				10AE8A701FBE0BAF00A55E26 /* grocerieList.txt */,
+				109C2C541FC2623A00FCB6BE /* ElectronicsList.txt */,
 				10AE8A771FBE280C00A55E26 /* CartList.txt */,
 				100F80F61FBB58F9002E2295 /* movielist.txt */,
 				10AE8A721FBE0F6F00A55E26 /* ClothingList.txt */,
