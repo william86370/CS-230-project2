@@ -3,6 +3,8 @@
 #define Item_h
 #include <stdio.h>
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #endif
 using namespace std;
 //wow the item class its the default class for everything to depend apawn
@@ -74,8 +76,11 @@ void item::getinfo(){
     cout<<"Name: "<<getname()<<" Price: "<< getprice()<<"$ UPC: "<< getupc();
 }
 string item::getinfoformated(){
-    
-    return (" "+name+" "+std::to_string(price)+" "+upc+"");
+    std::ostringstream sstream;
+    sstream << price;
+    std::string varAsString = sstream.str();
+
+    return (" "+name+" "+varAsString+" "+upc+"");
 }
 item* item::makeitem(){
     item* temp = new item();
